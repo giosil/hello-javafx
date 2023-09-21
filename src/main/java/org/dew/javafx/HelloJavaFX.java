@@ -12,6 +12,7 @@ import javafx.scene.layout.VBox;
 
 import javafx.stage.Stage;
 
+@SuppressWarnings("restriction")
 public 
 class HelloJavaFX extends Application 
 {
@@ -29,11 +30,14 @@ class HelloJavaFX extends Application
 
         TextField textField = new TextField();
         textField.setPromptText("Insert name");
+        textField.focusedProperty().addListener((obs, oldVal, newVal) -> { 
+          System.out.println(newVal ? "Focused" : "Unfocused");
+        });
 
         Button button = new Button("Greeting");
 
         Label label = new Label();
-
+        
         button.setOnAction(event -> {
             String name     = textField.getText();
             String greeting = comboBox.getValue();
@@ -41,11 +45,11 @@ class HelloJavaFX extends Application
             if(greeting == null || greeting.length() == 0) greeting = "Hello";
             
             if (!name.isEmpty()) {
-              label.setStyle("-fx-text-fill: #000080; -fx-font-weight: bold; -fx-font-size: 14px;");
+              label.setStyle("-fx-text-fill: #000080; -fx-font-weight: bold; -fx-font-size: 14pt;");
               label.setText(greeting + " " + name + "!");
             } 
             else {
-              label.setStyle("-fx-text-fill: #800000; -fx-font-weight: bold; -fx-font-size: 14px;");
+              label.setStyle("-fx-text-fill: #800000; -fx-font-weight: bold; -fx-font-size: 14pt;");
               label.setText("Missing name.");
             }
         });
