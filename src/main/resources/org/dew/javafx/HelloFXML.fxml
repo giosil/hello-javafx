@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dew.javafx.HelloFXML" stylesheets="@main.css" spacing="10">
+	<children>
+		<ComboBox fx:id="cboGreeting" prefWidth="100.0" value="Hello">
+			<items>
+				<FXCollections fx:factory="observableArrayList">
+					<String fx:value="Hello" />
+					<String fx:value="Ciao" />
+					<String fx:value="Salut" />
+				</FXCollections>
+			</items>
+		</ComboBox>
+		<TextField fx:id="txtName" prefWidth="100.0" />
+		<Label fx:id="lblOutput" styleClass="msg-info" text="" />
+		<Button fx:id="btnGreeting" onAction="#onGreeting" prefHeight="40.0" prefWidth="120.0" text="Greeting">
+			<graphic>
+				<ImageView pickOnBounds="true" preserveRatio="true">
+					<image>
+						<Image url="/icons/checkFx-24x.png" />
+					</image>
+				</ImageView>
+			</graphic>
+		</Button>
+	</children>
+	<padding>
+		<Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+	</padding>
+</VBox>

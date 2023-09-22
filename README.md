@@ -1,6 +1,6 @@
 # Hello JavaFX
 
-A JavaFX sample application.
+A collection of JavaFX sample applications.
 
 ## Build
 
