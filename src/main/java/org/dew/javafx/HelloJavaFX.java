@@ -10,6 +10,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 @SuppressWarnings("restriction")
@@ -37,7 +38,7 @@ class HelloJavaFX extends Application
         Button button = new Button("Greeting");
 
         Label label = new Label();
-        
+
         button.setOnAction(event -> {
             String name     = textField.getText();
             String greeting = comboBox.getValue();
@@ -45,11 +46,15 @@ class HelloJavaFX extends Application
             if(greeting == null || greeting.length() == 0) greeting = "Hello";
             
             if (!name.isEmpty()) {
-              label.setStyle("-fx-text-fill: #000080; -fx-font-weight: bold; -fx-font-size: 14pt;");
+              // label.setStyle("-fx-text-fill: #000080; -fx-font-weight: bold; -fx-font-size: 14pt;");
+              label.getStyleClass().clear();
+              label.getStyleClass().add("msg-info"); // Defined in HelloJavaFX.css
               label.setText(greeting + " " + name + "!");
             } 
             else {
-              label.setStyle("-fx-text-fill: #800000; -fx-font-weight: bold; -fx-font-size: 14pt;");
+              // label.setStyle("-fx-text-fill: #800000; -fx-font-weight: bold; -fx-font-size: 14pt;");
+              label.getStyleClass().clear();
+              label.getStyleClass().add("msg-error"); // Defined in HelloJavaFX.css
               label.setText("Missing name.");
             }
         });
@@ -60,8 +65,22 @@ class HelloJavaFX extends Application
         VBox vbox = new VBox(10);
         vbox.getChildren().addAll(hbox, button, label);
         vbox.setStyle("-fx-padding: 20px; -fx-background-color: #c9e8ff;");
+        vbox.getStylesheets().add(HelloJavaFX.class.getResource("HelloJavaFX.css").toExternalForm());
 
-        Scene scene = new Scene(vbox, 300, 150);
+        double width  = Screen.getPrimary().getVisualBounds().getWidth();
+        double height = Screen.getPrimary().getVisualBounds().getHeight();
+
+        primaryStage.setWidth(width / 4);
+        primaryStage.setHeight(height / 4);
+        primaryStage.setX(50);
+        primaryStage.setY(50);
+        primaryStage.setResizable(true);
+        primaryStage.setAlwaysOnTop(false);
+        primaryStage.setIconified(false);
+        primaryStage.setFullScreen(false);
+        primaryStage.setOpacity(1);
+
+        Scene scene = new Scene(vbox);
 
         primaryStage.setScene(scene);
 

@@ -1,0 +1,11 @@
+.msg-error {
+	-fx-text-fill: #800000;
+	-fx-font-weight: bold;
+	-fx-font-size: 14pt;
+}
+
+.msg-info {
+	-fx-text-fill: #000080;
+	-fx-font-weight: bold;
+	-fx-font-size: 14pt;
+}
